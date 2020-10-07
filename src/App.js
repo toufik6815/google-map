@@ -1,23 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Direction from './components/Direction/Direction';
+import Map from './components/Map/Map';
 
 function App() {
+  const [origin, SetOrigin] = useState('');
+  const [destination, SetDestination] = useState('');
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Map></Map>
+        <br></br>
+        <input type="text" placeholder="Starting From" onBlur={e => SetOrigin(e.target.value)}/>
+        <input type="text" placeholder="Going to" onBlur={e => SetDestination(e.target.value)}/>
+        <Direction origin={origin} destination={destination}></Direction>
       </header>
     </div>
   );
